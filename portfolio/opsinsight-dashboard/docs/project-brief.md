@@ -1,9 +1,9 @@
 # OpsInsight IT Automation Dashboard
 
 ## Project Overview
-OpsInsight is a full-stack IT automation dashboard that helps IT teams review user, device, and ticket data from one place.
+OpsInsight is a frontend IT automation dashboard prototype that helps IT teams review user, device, and ticket data from one place.
 
-The app analyzes mock IT operations data, identifies inactive users, non-compliant devices, and high-priority support risks, then displays the results in a clean dashboard.
+The current app analyzes local mock IT operations data, identifies inactive users, non-compliant devices, and high-priority support risks, then displays the results in a clean dashboard.
 
 ## Problem
 IT teams often review user activity, device compliance, and support ticket status manually across spreadsheets, ticketing systems, and admin portals.
@@ -13,7 +13,7 @@ This can make it harder to quickly identify risks such as inactive accounts, non
 ## Solution
 OpsInsight provides a dashboard where IT data can be reviewed in one place.
 
-The app will use a React frontend, Python FastAPI backend, SQL database, and REST API endpoints to process and display IT operations data.
+The current version uses a React frontend with local mock data. A future version can add a FastAPI backend, SQL database, and REST API endpoints to process uploaded or stored IT operations data.
 
 ## Target Users
 - IT Operations Analysts
@@ -29,9 +29,15 @@ The app will use a React frontend, Python FastAPI backend, SQL database, and RES
 - Tickets table
 - Risk report page
 - Search and filtering
+- Local mock data
+- CSV-style risk report export
+- Simulated data upload workflow
+
+## Future Backend Roadmap
 - REST API connection
-- SQL-backed mock data
-- Basic backend tests
+- FastAPI service layer
+- SQL-backed data storage
+- Backend tests
 
 ## Risk Rules
 
@@ -52,28 +58,24 @@ The app will use a React frontend, Python FastAPI backend, SQL database, and RES
 
 ## Tech Stack
 - React
-- JavaScript
+- TypeScript
 - HTML
 - CSS
-- Python
-- FastAPI
-- SQLite
-- REST APIs
 - Git and GitHub
-- Figma
-- Render or Vercel for deployment
+- Vite
+- Tailwind CSS
+- Figma planning prompts
 
 ## Portfolio Positioning
 OpsInsight demonstrates my ability to combine IT operations experience with software development skills.
 
-The project shows that I can design and build practical tools using React, Python, SQL, REST APIs, and automation-focused workflows.
+The project shows that I can design and build practical frontend tools using React, TypeScript, dashboard UI patterns, and automation-focused workflows.
 
 ## Success Criteria
-The project is complete when:
+The current frontend prototype is complete when:
 - The frontend displays dashboard data
-- The backend provides API endpoints
-- The database stores mock users, devices, and tickets
+- Mock users, devices, tickets, and risks are visible
 - Risk levels are calculated correctly
-- The app is deployed
-- The GitHub repo has a clear README
+- The app builds successfully
+- The README explains the prototype scope
 - The project is added to my portfolio page

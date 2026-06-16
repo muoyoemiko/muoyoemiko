@@ -213,15 +213,7 @@ These steps should be completed before treating the project as fully polished:
 - Create or confirm a public GitHub repository for `opsinsight-dashboard`.
 - Deploy the frontend to GitHub Pages, Vercel, Netlify, or another public host if you want a cleaner URL than the nested local demo path.
 - Add a real `GitHub` button to the modal after the repository is public.
-- Update `~/Documents/opsinsight-dashboard/frontend/README.md`; it currently still looks like the default Vite README.
-- Add at least one real dashboard screenshot, not only the hero graphic.
-- Confirm whether the backend/API exists yet. If not, describe the project as a frontend dashboard prototype until the backend is built.
-- Run the project's lint command before linking it publicly:
-
-```zsh
-cd portfolio/opsinsight-dashboard/frontend
-npm run lint
-```
+- Keep describing OpsInsight as a frontend dashboard prototype until the backend/API is built.
 
 ### 6. Completion note
 

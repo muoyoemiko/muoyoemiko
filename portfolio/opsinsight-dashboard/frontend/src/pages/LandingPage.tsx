@@ -82,9 +82,9 @@ export function LandingPage({
         </p>
 
         <p className="mt-5 max-w-3xl text-base leading-8 text-slate-600 sm:text-lg">
-          A full-stack dashboard that analyzes mock IT operations data and
-          highlights inactive users, non-compliant devices, and high-priority
-          support tickets.
+          A frontend dashboard prototype that analyzes mock IT operations data
+          and highlights inactive users, non-compliant devices, and
+          high-priority support tickets.
         </p>
 
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
