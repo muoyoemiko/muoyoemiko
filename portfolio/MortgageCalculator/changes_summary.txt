@@ -1,0 +1,91 @@
+### Changes Summary for Calculator Project
+Date: April 16, 2026
+
+#### script.js Changes:
+- **validateForm() Function**:
+  - Fixed mortgage calculation formula to compute monthly payments accurately using the standard formula: Monthly Payment = PV * [r(1+r)^n] / [(1+r)^n - 1], where r = annual rate / 12, n = years * 12.
+  - Changed parseInt to parseFloat for interest rate and mortgage amount to handle decimals.
+  - Improved validation: Only shows errors for invalid fields; calculates and displays results only if all inputs are valid.
+  - Updated postal code validation to use regex for full Canadian postal code format instead of hardcoded 'L'.
+  - Added isValid flag to control flow.
+
+- **clearErrors() Function**:
+  - Simplified to directly clear all error and result elements without redundant variables.
+
+- **New showError() Function**:
+  - Added helper function to set error messages and color consistently.
+
+- **Other**:
+  - Removed showAlert() call from validateForm() to prevent premature error display.
+  - Enhanced error messages for clarity (e.g., specified percentage for interest).
+
+#### calculator.html Changes:
+- **Head Section**:
+  - Added meta description for SEO: "Mortgage calculator for Hamilton Homes portfolio project. Calculate monthly payments with validation."
+  - Added link to new styles.css file.
+
+- **Layout**:
+  - Wrapped form and alerts in Bootstrap container/row/col for centering and responsiveness.
+  - Changed input column classes from col-sm-8 to col-sm-12 for full width within container.
+  - Added portfolio intro paragraph: "This mortgage calculator was built as part of a web development portfolio project. Enter your details to estimate monthly payments."
+
+- **Inputs**:
+  - Updated placeholders with examples (e.g., "e.g., 300000" for Mortgage Amount).
+  - Added (%) to Interest Rate label for clarity.
+
+- **Alerts**:
+  - Moved alerts inside the centered container for consistency.
+  - Removed inline margins and col-sm-8 classes, relying on container.
+
+#### New File: styles.css
+- Added custom CSS for professional styling:
+  - Gradient background on body.
+  - Box shadows on navbar and form.
+  - Rounded corners and padding on form.
+  - Margin adjustments for buttons and alerts.
+
+These changes improve functionality, accuracy, usability, and visual appeal for portfolio presentation. No syntax errors detected.
+
+#### Integration into Portfolio (index.html):
+- **Updated Project Card**: Changed the "Project One" card in index.html to "Mortgage Calculator" with a description: "A responsive mortgage payment calculator with input validation, built using HTML, CSS, Bootstrap, and JavaScript."
+- **Link Adjustment**: Modified the "View Project" button to link to MortgageCalculator/calculator.html (relative path from index.html) and open in a new tab (target="_blank").
+- **Removed Modal Trigger**: Eliminated data-bs-toggle and data-bs-target attributes to link directly to the page instead of opening a modal.
+- **Path Note**: Assumes calculator.html and related files (script.js, styles.css) are in the MortgageCalculator/ folder relative to index.html.
+
+---
+
+### Recent Layout Refresh
+Date: June 15, 2026
+
+#### calculator.html Changes:
+- **Page Structure**:
+  - Replaced the older stacked Bootstrap container layout with a clearer `main` section and calculator-focused page structure.
+  - Added a hero intro area with the title "Mortgage Payment Calculator" and a short explanation of the tool.
+  - Removed extra closing `div` elements that made the page structure harder to read and maintain.
+
+- **Calculator Layout**:
+  - Created a two-panel layout with the loan input form on one side and the payment summary on the other.
+  - Grouped related fields together so interest rate and loan length sit side by side on larger screens.
+  - Added a dedicated result panel with a short tip and clearer result/error placement.
+
+- **Input Presentation**:
+  - Added visual input helpers for currency, percentage, and years using `$`, `%`, and `yrs` labels.
+  - Added mobile-friendly `inputmode` attributes for number-based fields.
+  - Updated the calculate button text to "Calculate Payment" for clearer action wording.
+
+- **Navbar Fix**:
+  - Fixed the Bootstrap navbar icon class from `navbar-toggle-icon` to `navbar-toggler-icon`.
+  - Deferred the local `script.js` file so page markup loads before the calculator script runs.
+
+#### styles.css Changes:
+- Replaced the previous minimal styling with a full responsive layout system:
+  - Added design variables for colors, surface backgrounds, borders, and shadows.
+  - Added a polished page background and stronger card styling.
+  - Added responsive two-column desktop layout and stacked mobile layout.
+  - Improved form spacing, field grouping, button layout, and result/error card styling.
+  - Added validation border styling for prefixed/suffixed input wrappers.
+  - Made action buttons full width on smaller screens.
+
+#### Validation:
+- Ran `node --check portfolio/MortgageCalculator/script.js`.
+- JavaScript syntax check passed.

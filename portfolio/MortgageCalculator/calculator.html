@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Mortgage calculator for Hamilton Homes portfolio project. Calculate monthly payments with validation.">
+    <title>Hamilton Homes: Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <script src="./script.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand">Hamilton Homes</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" >Home</a>
+            <a class="nav-link active" >Search</a>
+            <a class="nav-link active" >Map</a>
+            <a class="nav-link active" aria-current="page" href="calculator.html">Calculator</a>
+            <a class="nav-link active" >Realtors</a>
+            <a class="nav-link active" >Login</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main class="calculator-page">
+      <section class="container">
+        <div class="calculator-hero text-center">
+          <p class="eyebrow">Hamilton Homes</p>
+          <h1>Mortgage Payment Calculator</h1>
+          <p>Enter a few loan details to estimate your monthly mortgage payment with clear validation feedback.</p>
+        </div>
+
+        <div class="calculator-shell">
+          <form id="form" onsubmit="return false;" class="calculator-card">
+            <legend>Loan Details</legend>
+            <p class="form-intro">Use whole numbers for the mortgage amount and interest rate. Loan length must be between 5 and 30 years.</p>
+
+            <div class="field-group">
+              <label for="Mortgage" class="form-label">Mortgage Amount</label>
+              <div class="input-prefix">
+                <span>$</span>
+                <input id="Mortgage" name="Mortgage" type="text" class="form-control" placeholder="300000" inputmode="decimal">
+              </div>
+            </div>
+
+            <div class="field-grid">
+              <div class="field-group">
+                <label for="Interest" class="form-label">Interest Rate</label>
+                <div class="input-suffix">
+                  <input id="Interest" name="Interest" type="text" class="form-control" placeholder="5" inputmode="decimal">
+                  <span>%</span>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label for="Loan" class="form-label">Loan Length</label>
+                <div class="input-suffix">
+                  <input id="Loan" name="Loan" type="text" class="form-control" placeholder="25" inputmode="numeric">
+                  <span>yrs</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="Postal" class="form-label">Postal Code</label>
+              <input id="Postal" name="Postal" type="text" class="form-control text-uppercase" placeholder="L8N 1A1" autocomplete="postal-code">
+            </div>
+
+            <div class="button-row">
+              <button id="calculate" onclick="validateForm()" class="btn btn-primary" type="button">Calculate Payment</button>
+              <button type="reset" onclick="clearErrors()" class="btn btn-outline-secondary">Reset</button>
+            </div>
+          </form>
+
+          <aside class="result-card" aria-labelledby="resultTitle">
+            <div>
+              <p class="eyebrow">Estimate</p>
+              <h2 id="resultTitle">Your payment summary</h2>
+              <p class="result-copy">Results appear here after a valid calculation.</p>
+            </div>
+
+            <p id="totalMortgage" class="alert alert-success result-alert" role="status" style="display: none;"></p>
+
+            <div id="alertBox" class="alert alert-danger" role="alert" style="display: none;">
+              <p class="alert-heading">Please fix these fields:</p>
+              <ul class="error-list">
+                <li><p id="mortgageError"></p></li>
+                <li><p id="interestError"></p></li>
+                <li><p id="LoanError"></p></li>
+                <li><p id="PostalError"></p></li>
+              </ul>
+            </div>
+
+            <div class="tip-box">
+              <strong>Tip</strong>
+              <p>Try different interest rates or loan lengths to compare how the monthly payment changes.</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>

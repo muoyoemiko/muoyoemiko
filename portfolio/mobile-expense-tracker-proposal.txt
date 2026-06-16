@@ -1,0 +1,26 @@
+Mobile Expense Tracker Proposal
+
+Project Goal
+Create a mobile-friendly expense tracker that replaces the Recipe Finder App in the portfolio with a practical finance tool. The app will show stronger JavaScript skills through form handling, dynamic rendering, filtering, calculations, and saved browser data.
+
+Core Features
+- Add income and expense transactions.
+- Choose categories such as Food, Bills, Transport, Shopping, Work, and Other.
+- Show current balance, total income, and total expenses.
+- Display a recent transaction list.
+- Filter transactions by category.
+- Delete transactions when needed.
+- Save transactions with localStorage so the data stays after refreshing the browser.
+- Use a responsive layout that works well on phone screens first, then scales up for desktop.
+
+Technical Approach
+The first version will use HTML, CSS, and JavaScript so it fits cleanly inside the current portfolio without adding a build step. JavaScript will store transactions as an array of objects, render the totals and list from that array, and sync changes to localStorage.
+
+Portfolio Integration
+The existing Recipe Finder App card will be replaced with Mobile Expense Tracker. The project modal will describe the app and include a Launch Demo button that opens portfolio/expense-tracker/index.html.
+
+Success Criteria
+- The app can be used on mobile without horizontal scrolling.
+- Transactions persist after a page refresh.
+- Totals update immediately after adding or deleting entries.
+- The portfolio card and modal clearly explain what the project does and which skills it demonstrates.

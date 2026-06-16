@@ -1,0 +1,419 @@
+/* ===============================
+   Accessibility: Reduce Motion
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ================================
+   1. Box Model Improvement
+   (Safe – Bootstrap already uses this,
+   but this ensures consistency)
+================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+/* ================================
+   2. Improve Typography
+   (Does NOT override Bootstrap classes)
+================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+
+/* ================================
+   3. Responsive Media Defaults
+   (Bootstrap already has .img-fluid,
+   this makes it automatic for plain images)
+================================ */
+
+img,
+picture,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+/* ================================
+   4. Better Form Consistency
+   (Does not conflict with .form-control)
+================================ */
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+
+/* ================================
+   5. Prevent Accidental Overflow
+================================ */
+
+body {
+  overflow-x: hidden;
+}
+
+
+/* ================================
+   6. Accessible Focus Styles
+   (Only affects keyboard users)
+================================ */
+
+:focus-visible {
+  outline: 3px solid rgba(13, 110, 253, 0.6); /* Bootstrap primary color */
+  outline-offset: 2px;
+}
+
+
+/* ================================
+   7. Optional: Root Variables
+   (Safe, does not override Bootstrap)
+================================ */
+
+:root {
+  --primary-color: #4f46e5;
+  --accent-color: #06b6d4;
+  --dark-color: #0f172a;
+  --light-bg: #f8fafc;
+  --soft-gray: #e2e8f0;
+  --section-spacing: 5rem;
+} 
+
+
+/* ================================
+   8. Section Spacing Utility
+   (Custom class, avoids Bootstrap overrides)
+================================ */
+
+.section-spacing {
+  padding: var(--section-spacing) 0;
+}
+
+
+/* ================================
+   9. Smooth Anchor Offset for Fixed Navbar
+   (Useful if using fixed-top navbar)
+================================ */
+
+section {
+  scroll-margin-top: 80px;
+  padding: 5rem 0;
+}
+
+/* Override Bootstrap primary safely */
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: #4338ca;
+  border-color: #4338ca;
+}
+
+/* ===============================
+   HERO SECTION
+================================ */
+
+#home {
+  background: linear-gradient(
+    135deg,
+    var(--dark-color) 0%,
+    #1e293b 50%,
+    #111827 100%
+  );
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glow effect */
+#home::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--accent-color), transparent 70%);
+  top: -200px;
+  right: -200px;
+  opacity: 0.15;
+  animation: floatGlow 8s ease-in-out infinite alternate;
+}
+
+/* Animation */
+@keyframes floatGlow {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(40px);
+  }
+}
+
+#home .btn-primary {
+  background-color: var(--accent-color);
+  border: none;
+}
+
+#about {
+  background-color: var(--light-bg);
+}
+
+[data-bs-theme="dark"] #about {
+  background-color: #0b1220;
+}
+
+#projects {
+  background-color: var(--soft-gray);
+}
+
+#projects .project-container {
+  max-width: 1180px;
+  padding-inline: clamp(1.25rem, 4vw, 2rem);
+}
+
+#projects .project-grid {
+  justify-content: center;
+}
+
+#projects .project-card {
+  border: 0;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+#projects .project-card .card-img-top {
+  height: clamp(11rem, 22vw, 14rem);
+  object-fit: contain;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+}
+
+#projects .project-card .card-body {
+  padding: 1.5rem;
+}
+
+#projects .project-card .btn {
+  align-self: flex-start;
+}
+
+#skills {
+  padding-top: 7rem;
+}
+
+[data-bs-theme="dark"] #projects {
+  background-color: #111827;
+}
+
+[data-bs-theme="dark"] #projects .project-card .card-img-top {
+  background: linear-gradient(135deg, #111827 0%, #164e63 100%);
+}
+
+@media (max-width: 575.98px) {
+  #projects .project-container {
+    padding-inline: 1rem;
+  }
+
+  #projects .project-card .btn {
+    width: 100%;
+  }
+}
+
+/* ===============================
+   Scroll Animations
+================================ */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.navbar-nav .nav-link.active {
+  color: var(--accent-color) !important;
+  font-weight: 600;
+}
+
+/* Modal Image */
+.modal-body img {
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Modal buttons */
+.modal-body .btn-primary {
+  margin-top: 1rem;
+}
+
+[data-bs-theme="dark"] .modal-content {
+  background-color: #1f2937;
+  color: #f8fafc;
+}
+
+/* ===============================
+   Skills
+================================ */
+.skill-card {
+  border: 1px solid var(--soft-gray);
+  border-radius: 0.75rem;
+  background: #ffffff;
+  padding: 1.5rem;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.skill-card h5 {
+  margin-bottom: 0.75rem;
+}
+
+.skill-card p {
+  margin-bottom: 0;
+  color: #475569;
+}
+
+[data-bs-theme="dark"] .skill-card {
+  border-color: #1f2937;
+  background: #111827;
+}
+
+[data-bs-theme="dark"] .skill-card p {
+  color: #cbd5e1;
+}
+
+/* Typing Cursor */
+#typing-text::after {
+  content: "|";
+  margin-left: 5px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+/* Smooth nav transition */
+.navbar-nav .nav-link {
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  transform: translateY(-2px);
+}
+
+.navbar-nav .nav-link.active {
+  color: var(--accent-color) !important;
+  font-weight: 600;
+  position: relative;
+}
+
+.navbar-nav .nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent-color);
+}
+
+#particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+#home .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* ===============================
+   Glassmorphism Navbar
+================================ */
+
+.glass-navbar {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Light mode version */
+[data-bs-theme="light"] .glass-navbar {
+  background: rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Navbar links color fix */
+.glass-navbar .nav-link {
+  color: inherit;
+}
+
+/* Add subtle shadow on scroll */
+.navbar-scrolled {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ===============================
+   Stagger Reveal Animation
+================================ */
+
+.reveal-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-item.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===============================
+   Hover Tilt Effect
+================================ */
+
+.tilt-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transform-style: preserve-3d;
+}
+
+.tilt-card:hover {
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+h2.proj {
+  color: var(--dark-color);
+}
