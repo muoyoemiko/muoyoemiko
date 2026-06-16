@@ -1,20 +1,10 @@
-// ===============================
-// Accessibility: Respect Reduced Motion
-// ===============================
-
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-// ===============================
-// Dark Mode Auto-Detect + Toggle
 
 const toggleBtn = document.getElementById("themeToggle");
 const html = document.documentElement;
 const contactEmail = "contact@muoyoemiko.dev";
 
-// Detect system preference
 const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-// Check localStorage first
 let savedTheme = localStorage.getItem("theme");
 
 if (savedTheme) {
@@ -23,7 +13,6 @@ if (savedTheme) {
   html.setAttribute("data-bs-theme", systemPrefersDark ? "dark" : "light");
 }
 
-// Update toggle icon
 function updateToggleIcon() {
   if (!toggleBtn) return;
 
@@ -36,7 +25,6 @@ function updateToggleIcon() {
 
 updateToggleIcon();
 
-// Toggle click
 if (toggleBtn) {
   toggleBtn.addEventListener("click", () => {
     let currentTheme = html.getAttribute("data-bs-theme");
@@ -49,40 +37,31 @@ if (toggleBtn) {
   });
 }
 
-
-// ===============================
-// Scroll-Triggered Animations
-// ===============================
-
-// Animate sections with .animate-on-scroll when they enter viewport
+// Reveal animated sections once they enter the viewport.
 const animateElements = document.querySelectorAll('.animate-on-scroll');
 
 const observerOptions = {
   root: null,
   rootMargin: '0px',
-  threshold: 0.2 // trigger when 20% visible
+  threshold: 0.2
 };
 
 const observer = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('animated');
-      observer.unobserve(entry.target); // animate once
+      observer.unobserve(entry.target);
     }
   });
 }, observerOptions);
 
 animateElements.forEach(el => observer.observe(el));
 
-// ===============================
-// Active Navbar Highlight
-// ===============================
-
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
 
 function activateNav() {
-  let scrollPos = window.scrollY + 100; // offset for fixed navbar
+  const scrollPos = window.scrollY + 100;
   sections.forEach(section => {
     if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
       navLinks.forEach(link => {
@@ -96,10 +75,6 @@ function activateNav() {
 }
 
 window.addEventListener('scroll', activateNav);
-
-// ===============================
-// Hero Typing Animation
-// ===============================
 
 const typingElement = document.getElementById("typing-text");
 
@@ -126,7 +101,7 @@ function typeEffect() {
   let typingSpeed = isDeleting ? 50 : 100;
 
   if (!isDeleting && charIndex === currentRole.length + 1) {
-    typingSpeed = 1500; // pause before deleting
+    typingSpeed = 1500;
     isDeleting = true;
   } 
   else if (isDeleting && charIndex === 0) {
@@ -138,14 +113,9 @@ function typeEffect() {
   setTimeout(typeEffect, typingSpeed);
 }
 
-// Start typing effect
 if (typingElement && !prefersReducedMotion) {
   typeEffect();
 }
-
-// ===============================
-// Interactive Network Particles
-// ===============================
 
 const canvas = document.getElementById("particles");
 let particlesAnimationId;
@@ -220,7 +190,6 @@ if (canvas && !prefersReducedMotion) {
         }
       }
 
-      // Mouse interaction
       let dx = particlesArray[a].x - mouse.x;
       let dy = particlesArray[a].y - mouse.y;
       let mouseDistance = dx * dx + dy * dy;
@@ -265,11 +234,6 @@ if (canvas && !prefersReducedMotion) {
   });
 }
 
-
-// ===============================
-// Subtle Hero Parallax
-// ===============================
-
 const heroContent = document.getElementById("hero-content");
 
 if (!prefersReducedMotion) {
@@ -288,10 +252,6 @@ if (!prefersReducedMotion) {
   });
 }
 
-// ===============================
-// Navbar Shadow on Scroll
-// ===============================
-
 const navbar = document.querySelector(".glass-navbar");
 
 window.addEventListener("scroll", () => {
@@ -304,10 +264,6 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// ===============================
-// Stagger Reveal Animation
-// ===============================
-
 const revealItems = document.querySelectorAll(".reveal-item");
 
 const revealObserver = new IntersectionObserver((entries) => {
@@ -319,7 +275,7 @@ const revealObserver = new IntersectionObserver((entries) => {
       items.forEach((item, index) => {
         setTimeout(() => {
           item.classList.add("active");
-        }, index * 150); // stagger delay
+        }, index * 150);
       });
 
       revealObserver.unobserve(entry.target);
@@ -327,7 +283,6 @@ const revealObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.2 });
 
-// Apply observer to sections
 document.querySelectorAll("section").forEach(section => {
   revealObserver.observe(section);
 });
@@ -341,10 +296,6 @@ navLinks.forEach(link => {
     }
   });
 });
-
-// ===============================
-// Hover Tilt Effect
-// ===============================
 
 const tiltCards = document.querySelectorAll(".tilt-card");
 
@@ -368,10 +319,6 @@ tiltCards.forEach(card => {
   });
 });
 
-// ===============================
-// Contact Form
-// ===============================
-
 const contactForm = document.getElementById('contactForm');
 const contactStatus = document.getElementById('contactStatus');
 
@@ -393,10 +340,6 @@ if (contactForm) {
     }
   });
 }
-
-// ===============================
-// Dynamic Copyright Year
-// ===============================
 
 document.addEventListener('DOMContentLoaded', () => {
   const year = new Date().getFullYear();
